@@ -1,8 +1,8 @@
 {
-  "name": "send-email-contato-escoladesoftware",
+  "name": "escoladesoftware-cursos-lambdacursos-fn",
   "version": "1.0.0",
-  "description": "send email de contato para escola de software",
-  "repository": "https://github.com/PePires58/EscolaDeSoftware-SenderEmailContact",
+  "description": "contém uma lambda que consulta os cursos na base de dados",
+  "repository": "https://github.com/PePires58/EscolaDeSoftware_Cursos_LambdaCursos",
   "main": "app.js",
   "scripts": {
     "test": "mocha './specs/*.spec.js'"
@@ -11,7 +11,6 @@
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.1385.0",
-    "mocha": "^10.1.0",
-    "nodemailer": "^6.8.0"
+    "mocha": "^10.1.0"
   }
 }
