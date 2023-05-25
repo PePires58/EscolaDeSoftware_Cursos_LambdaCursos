@@ -38,14 +38,3 @@ Resources:
       Architectures:
         - x86_64
       Timeout: 5
-      Policies:
-        - Fn::Join:
-            [
-              "",
-              [
-                "arn:aws:iam::",
-                !Sub "${AWS::AccountId}",
-                ":policy/",
-                !Ref CursosLambdaCursosPolicy,
-              ],
-            ]
