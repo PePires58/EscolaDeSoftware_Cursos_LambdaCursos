@@ -1,6 +1,0 @@
-{
-  "Parameters": {
-    "Environment": "test",
-    "CursosLambdaCursosPolicyName": "test_BlogPostTablePutItem_Policy"
-  }
-}

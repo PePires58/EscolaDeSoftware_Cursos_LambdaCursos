@@ -1,9 +1,15 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
-Description: Escola de software - Send Email - Lambda Function
+Description: Escola de software - Cursos - Lambda Cursos FN
+Parameters:
+  Environment:
+    Description: Environment
+    Type: String
+  TableName:
+    Description: Table Name
+    Type: String
 
-Resources:
-  
+Resources:  
   SendEmailFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -13,3 +19,6 @@ Resources:
       CodeUri: src/
       Runtime: nodejs16.x
       Timeout: 2
+    Environment:
+        Variables:
+          TableName: !Ref TableName

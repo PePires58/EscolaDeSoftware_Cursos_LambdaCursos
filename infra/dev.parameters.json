@@ -1,6 +1,6 @@
 {
   "Parameters": {
     "Environment": "dev",
-    "CursosLambdaCursosPolicyName": "dev_BlogPostTablePutItem_Policy"
+    "TableName": "tbes_cursos_dev"
   }
 }
