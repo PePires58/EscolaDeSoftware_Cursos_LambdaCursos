@@ -33,7 +33,7 @@ Resources:
       FunctionName: !Join ["_", [!Ref Environment, CursosLambdaCursosFn]]
       Description: Lambda responsavel por buscar os cursos na base de dados
       CodeUri: src/
-      Handler: EscolaDeSoftware.Cursos.LambdaCursos::EscolaDeSoftware.Cursos.LambdaCursos.Function::FunctionHandler
+      Handler: "EscolaDeSoftware.Cursos.LambdaCursos::EscolaDeSoftware.Cursos.LambdaCursos.Function::FunctionHandler"
       Runtime: dotnet6
       Architectures:
         - x86_64
