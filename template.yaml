@@ -22,5 +22,5 @@ Resources:
       Policies:
         - AmazonDynamoDBReadOnlyAccess
     Environment:
-        Variables:
-          TableName: !Ref TableName
+      Variables:
+        TableName: !Ref TableName
