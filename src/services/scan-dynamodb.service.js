@@ -16,6 +16,6 @@ exports.getCoursesFromDb = async function () {
         })
         .catch((error) => {
             console.log(error);
-            throw
+            throw error;
         });
 }
