@@ -21,6 +21,11 @@ Resources:
       Timeout: 2
       Policies:
         - AmazonDynamoDBReadOnlyAccess
-    Environment:
-      Variables:
-        TableName: !Ref TableName
+      Environment:
+        Variables:
+          TableName: !Ref TableName
+      Tags: 
+        - Key: Ambiente
+          Value: !Ref Environment
+        - Key: Microservico
+          Value: Cursos

@@ -7,7 +7,6 @@ exports.getCoursesFromDb = async function () {
         ConsistentRead: false
     };
 
-
     return await dynamodb.scan(params)
         .promise()
         .then((data) => {

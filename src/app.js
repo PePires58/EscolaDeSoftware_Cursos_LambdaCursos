@@ -3,12 +3,11 @@ const scanDynamoDbService = require('./services/scan-dynamodb.service');
 exports.lambdaHandler = async (event, context) => {
 
     try {
+
+
         await scanDynamoDbService.getCoursesFromDb()
             .then((data) => {
                 console.log(data);
-            })
-            .catch((error) => {
-                console.log(error);
             });
 
         return defaultResult(200, 'Dados buscados com sucesso');
