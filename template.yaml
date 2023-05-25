@@ -13,7 +13,7 @@ Resources:
   SendEmailFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Description: Sender email Lambda Fn
+      Description: Get courses from database
       FunctionName: escoladesoftware-cursos-lambdacursosfn
       Handler: app.lambdaHandler
       CodeUri: src/

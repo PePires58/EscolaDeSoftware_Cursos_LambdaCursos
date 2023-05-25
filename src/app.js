@@ -1,16 +1,9 @@
-const AWS = require('aws-sdk');
-const dynamodb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
+const scanDynamoDbService = require('./services/scan-dynamodb.service');
 
 exports.lambdaHandler = async (event, context) => {
 
     try {
-        const params = {
-            TableName: "tbes_cursos_dev",
-            ConsistentRead: false
-        };
-
-        await dynamodb.scan(params)
-            .promise()
+        await scanDynamoDbService.getCoursesFromDb()
             .then((data) => {
                 console.log(data);
             })
