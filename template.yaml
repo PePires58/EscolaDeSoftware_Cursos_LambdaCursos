@@ -10,10 +10,10 @@ Parameters:
     Type: String
 
 Resources:  
-  SendEmailFunction:
+  CursosLambdaCursosFn:
     Type: AWS::Serverless::Function
     Properties:
-      Description: Get courses from database
+      Description: get courses from database
       FunctionName: escoladesoftware-cursos-lambdacursosfn
       Handler: app.lambdaHandler
       CodeUri: src/
@@ -22,10 +22,10 @@ Resources:
       Policies:
         - AmazonDynamoDBReadOnlyAccess
       Tags: 
-      - Key: Ambiente
-        Value: !Ref Environment
-      - Key: Microservico
-        Value: Cursos
+        - Key: Ambiente
+          Value: !Ref Environment
+        - Key: Microservico
+          Value: Cursos
     Environment:
         Variables:
           TableName: !Ref TableName
