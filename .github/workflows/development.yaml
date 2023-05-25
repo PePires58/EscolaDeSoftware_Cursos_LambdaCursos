@@ -26,12 +26,22 @@ jobs:
         run: dotnet build ${{ env.SOLUTION_PATH }} --no-restore --configuration Release
 
       - name: Test
-        if: ${{ env.execute_unit_tests}} == "true"
         run: |
-          if ${{ env.execute_unit_tests }} == "true"
+          if ${{ env.execute_unit_tests }} == true
           then
             echo "run testes"
+          else
+            echo "unit test skipped"
           fi
+
+      - name: Publish
+        run: | 
+          dotnet publish ${{ env.SOLUTION_PATH }} -c Release --self-contained false -r linux-x64 -o publish
+
+      - name: Create Package ZIP
+        run: |
+          zip -r -q publish.zip ${{ env.SOLUTION_PATH }}/publish
+
 
       - name: Package
         run: |
