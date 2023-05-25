@@ -9,10 +9,14 @@ exports.lambdaHandler = async (event, context) => {
             ConsistentRead: false
         };
 
-        dynamodb.scan(params, function (err, data) {
-            if (err) console.log(err, err.stack);
-            else console.log(data);
-        });
+        await dynamodb.scan(params)
+            .promise()
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
 
         return defaultResult(200, 'Dados buscados com sucesso');
 
