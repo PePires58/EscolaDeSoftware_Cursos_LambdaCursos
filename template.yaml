@@ -31,7 +31,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Join ["_", [!Ref Environment, CursosLambdaCursosFn]]
-      Description: Lambda responsável por buscar os cursos na base de dados
+      Description: Lambda responsavel por buscar os cursos na base de dados
       CodeUri: src/
       Handler: EscolaDeSoftware.Cursos.LambdaCursos::EscolaDeSoftware.Cursos.LambdaCursos.Function::FunctionHandler
       Runtime: dotnet6
