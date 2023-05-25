@@ -4,7 +4,7 @@ on:
     branches: [development]
 
 env:
-  SOLUTION_PATH: "src/"
+  SOLUTION_PATH: "src/HelloWorld"
   execute_unit_tests: "false"
 
 jobs:
