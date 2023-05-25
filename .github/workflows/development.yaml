@@ -40,7 +40,7 @@ jobs:
 
       - name: Create Package ZIP
         run: |
-          zip -r -q publish.zip ${{ env.SOLUTION_PATH }}/publish
+          zip -r -q publish.zip publish
 
 
       - name: Package
