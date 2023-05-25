@@ -34,15 +34,6 @@ jobs:
             echo "unit test skipped"
           fi
 
-      - name: Publish
-        run: | 
-          dotnet publish ${{ env.SOLUTION_PATH }} -c Release --self-contained false -r linux-x64 -o publish
-
-      - name: Create Package ZIP
-        run: |
-          zip -r -q publish.zip publish
-
-
       - name: Package
         run: |
           sam package --s3-bucket ${{ secrets.AWS_BUCKET_DEPLOY }} --template-file template.yaml --output-template-file deploy.yaml

@@ -1,40 +1,20 @@
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Escola de software - Blog - Put BlogPost - Lambda Function
-Parameters:
-  Environment:
-    Description: Environment
-    Type: String
-  CursosLambdaCursosPolicyName:
-    Description: BlogPost Table Policy
-    Type: String
+Description: >
+  Sample SAM Template for teste
+
+Globals:
+  Function:
+    Timeout: 2
 
 Resources:
-  CursosLambdaCursosPolicy:
-    Type: AWS::IAM::ManagedPolicy
-    Properties:
-      Description: Policy for PutObject on S3 Bucket
-      ManagedPolicyName:
-        !Join [
-          "_",
-          [!Ref Environment, "CursosLambdaCursosPolicyName", "Policy"],
-        ]
-      Path: "/"
-      PolicyDocument:
-        Version: "2012-10-17"
-        Statement:
-          - Effect: Allow
-            Action: "s3:PutObject"
-            Resource: "*"
-
-  CursosLambdaCursosFunction:
+  HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Join ["_", [!Ref Environment, CursosLambdaCursosFn]]
-      Description: Lambda responsavel por buscar os cursos na base de dados
-      CodeUri: ./src
-      Handler: "EscolaDeSoftware.Cursos.LambdaCursos::EscolaDeSoftware.Cursos.LambdaCursos.Function::FunctionHandler"
-      Runtime: dotnet6
+      CodeUri: ./src/HelloWorld/
+      Handler: HelloWorld::HelloWorld.Function::FunctionHandler
       Architectures:
         - x86_64
-      Timeout: 5
+      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+        Variables:
+          PARAM1: VALUE
