@@ -28,4 +28,4 @@ Resources:
         - Key: Ambiente
           Value: !Ref Environment
         - Key: Microservico
-          Value: Cursos
+          Value: "Cursos"
