@@ -1,7 +1,6 @@
 {
   "Parameters": {
     "Environment": "dev",
-    "S3BucketName": "escoladesoftware-blog-blogpost-content-bucket",
-    "CursosLambdaCursosPolicy": "dev_BlogPostTablePutItem_Policy"
+    "CursosLambdaCursosPolicyName": "dev_BlogPostTablePutItem_Policy"
   }
 }

@@ -5,6 +5,7 @@ on:
 
 env:
   SOLUTION_PATH: "src/"
+  execute_unit_tests: "false"
 
 jobs:
   Deploy-stack:
@@ -24,6 +25,10 @@ jobs:
       - name: Build
         run: dotnet build ${{ env.SOLUTION_PATH }} --no-restore --configuration Release
 
+      - name: Test
+        if: ${{ env.execute_unit_tests}} == "true"
+        run: echo test
+
       - name: Package
         run: |
           sam package --s3-bucket ${{ secrets.AWS_BUCKET_DEPLOY }} --template-file template.yaml --output-template-file deploy.yaml
@@ -31,6 +36,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+
 
       - name: Deploy
         run: |

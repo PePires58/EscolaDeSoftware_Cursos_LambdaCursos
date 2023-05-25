@@ -5,7 +5,7 @@ Parameters:
   Environment:
     Description: Environment
     Type: String
-  CursosLambdaCursosPolicy:
+  CursosLambdaCursosPolicyName:
     Description: BlogPost Table Policy
     Type: String
 
@@ -17,7 +17,7 @@ Resources:
       ManagedPolicyName:
         !Join [
           "_",
-          [!Ref Environment, "CursosLambdaCursosPolicy", "Policy"],
+          [!Ref Environment, "CursosLambdaCursosPolicyName", "Policy"],
         ]
       Path: "/"
       PolicyDocument:
