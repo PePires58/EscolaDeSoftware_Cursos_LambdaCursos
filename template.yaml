@@ -14,11 +14,13 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Description: Sender email Lambda Fn
-      FunctionName: EscolaDeSoftware-Cursos-LambdaCursosFn
+      FunctionName: escoladesoftware-cursos-lambdacursosfn
       Handler: app.lambdaHandler
       CodeUri: src/
       Runtime: nodejs16.x
       Timeout: 2
+      Policies:
+        - AmazonDynamoDBReadOnlyAccess
     Environment:
         Variables:
           TableName: !Ref TableName
