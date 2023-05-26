@@ -29,3 +29,5 @@ Resources:
         Value: !Ref Environment
       - Key: Microservico
         Value: Cursos
+      - Key: Servico
+        Value: Lambda

@@ -6,9 +6,6 @@ on:
 jobs:
   Build-lambda:
     uses: PePires58/ReusableWorkflows/.github/workflows/001_nodejs_lambda.yaml@main
-    with:
-      working-directory: src
-      execute-unit-tests: "true"
 
   Deploy-lambda:
     needs: [Build-lambda]
@@ -16,7 +13,6 @@ jobs:
     with: 
       stack-name: "dev-escoladesoftware-cursos-lambdacursos-fn"
       parameters-file-path: "infra/dev.parameters.json"
-      aws-region: "sa-east-1"
     secrets:
       AWS_BUCKET_DEPLOY: ${{ secrets.AWS_BUCKET_DEPLOY }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
