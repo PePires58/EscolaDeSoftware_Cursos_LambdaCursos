@@ -5,19 +5,16 @@ exports.getCourses = async function () {
 
     let objetosRetorno = [];
 
-    await scanDynamoDbService.getCoursesFromDb()
-        .then((data) => {
-            const hasItensOnResult = data.Count > 0;
+    const data = await scanDynamoDbService.getCoursesFromDb();
+    const hasItensOnResult = data.Count > 0;
 
-            if (hasItensOnResult) {
-                data.Items.forEach((item) => {
-                    objetosRetorno.push(
-                        createCourseObjectService.createCourseObject(item)
-                    );
-                });
-            }
-
+    if (hasItensOnResult) {
+        data.Items.forEach((item) => {
+            objetosRetorno.push(
+                createCourseObjectService.createCourseObject(item)
+            );
         });
+    }
 
     return objetosRetorno;
 }
