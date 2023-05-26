@@ -1,17 +1,21 @@
+const scanDynamoDbService = require('./scan-dynamodb.service');
+const createCourseObjectService = require('./create-course-object.service');
+
 exports.getCourses = async function () {
 
-}
+    await scanDynamoDbService.getCoursesFromDb()
+        .then((data) => {
+            const objetosRetorno = [];
+            const hasItensOnResult = data.Count > 0;
 
-function montarObjetoPeloItem(item) {
-    let objetoRetorno = {
-        nome: "",
-        categoria: ""
-    };
+            if (hasItensOnResult) {
+                data.Items.forEach((item) => {
+                    objetosRetorno.push(
+                        createCourseObjectService.createCourseObject(item)
+                    );
+                });
+            }
 
-    if (item.nome)
-        objetoRetorno = item.nome.S;
-    if (item.categoria)
-        objetoRetorno = item.categoria.S;
-
-    return objetoRetorno;
+            return objetosRetorno;
+        });
 }

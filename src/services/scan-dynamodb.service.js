@@ -10,7 +10,6 @@ exports.getCoursesFromDb = async function () {
     return await dynamodb.scan(params)
         .promise()
         .then((data) => {
-            console.log(data);
             return data;
         })
         .catch((error) => {
