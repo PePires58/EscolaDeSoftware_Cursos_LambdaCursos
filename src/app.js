@@ -30,11 +30,11 @@ function errorResult(statusCode, errors) {
     };
 }
 
-function defaultResult(statusCode, message) {
+function defaultResult(statusCode, object) {
     return {
         'statusCode': statusCode,
         'body': JSON.stringify({
-            message: message
+            object
         }),
         'isBase64Encoded': false,
         'headers': {

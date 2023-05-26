@@ -5,9 +5,9 @@ exports.createCourseObject = function (item) {
     };
 
     if (item.nome)
-        objetoRetorno = item.nome.S;
+        objetoRetorno.nome = item.nome.S;
     if (item.categoria)
-        objetoRetorno = item.categoria.S;
+        objetoRetorno.categoria = item.categoria.S;
 
     return objetoRetorno;
 }
