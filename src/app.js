@@ -12,10 +12,6 @@ exports.lambdaHandler = async (event, context) => {
                 else
                     return errorResult(204, 'Não foram encontrados cursos');
             });
-
-        return defaultResult(200, 'Dados buscados com sucesso');
-
-
     } catch (error) {
         return errorResult(500, error);
     }
