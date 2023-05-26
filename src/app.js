@@ -1,13 +1,16 @@
-const scanDynamoDbService = require('./services/scan-dynamodb.service');
+const getCoursesService = require('./services/get-courses.service');
 
 exports.lambdaHandler = async (event, context) => {
 
     try {
 
-
-        await scanDynamoDbService.getCoursesFromDb()
-            .then((data) => {
-                console.log(data);
+        await getCoursesService.getCourses()
+            .then((cursos) => {
+                const hasCourses = cursos.length > 0;
+                if (hasCourses)
+                    return defaultResult(200, cursos);
+                else
+                    return errorResult(204, 'Não foram encontrados cursos');
             });
 
         return defaultResult(200, 'Dados buscados com sucesso');

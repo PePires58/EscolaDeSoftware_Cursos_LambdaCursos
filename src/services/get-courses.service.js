@@ -3,9 +3,10 @@ const createCourseObjectService = require('./create-course-object.service');
 
 exports.getCourses = async function () {
 
+    let objetosRetorno = [];
+
     await scanDynamoDbService.getCoursesFromDb()
         .then((data) => {
-            const objetosRetorno = [];
             const hasItensOnResult = data.Count > 0;
 
             if (hasItensOnResult) {
@@ -16,6 +17,7 @@ exports.getCourses = async function () {
                 });
             }
 
-            return objetosRetorno;
         });
+
+    return objetosRetorno;
 }

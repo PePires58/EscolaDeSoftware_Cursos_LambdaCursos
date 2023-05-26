@@ -17,7 +17,7 @@ Resources:
       FunctionName: escoladesoftware-cursos-lambdacursosfn
       Handler: app.lambdaHandler
       CodeUri: src/
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Timeout: 2
       Policies:
         - AmazonDynamoDBReadOnlyAccess

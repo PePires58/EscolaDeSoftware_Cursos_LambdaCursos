@@ -11,9 +11,5 @@ exports.getCoursesFromDb = async function () {
         .promise()
         .then((data) => {
             return data;
-        })
-        .catch((error) => {
-            console.log(error);
-            throw error;
         });
 }
