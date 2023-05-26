@@ -4,17 +4,14 @@ exports.lambdaHandler = async (event, context) => {
 
     try {
 
-        await getCoursesService.getCourses()
-            .then((cursos) => {
-                const hasCourses = cursos.length > 0;
-                if (hasCourses)
-                    return defaultResult(200, cursos);
-                else
-                    return errorResult(204, 'Não foram encontrados cursos');
-            })
-            .catch((error) => {
-                return errorResult(500, error);
-            });
+        const cursos = await getCoursesService.getCourses();
+
+        const hasCourses = cursos.length > 0;
+        if (hasCourses)
+            return defaultResult(200, cursos);
+        else
+            return errorResult(204, 'Não foram encontrados cursos');
+
     } catch (error) {
         return errorResult(500, error);
     }
