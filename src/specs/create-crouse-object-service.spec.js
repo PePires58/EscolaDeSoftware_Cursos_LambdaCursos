@@ -13,7 +13,7 @@ describe('Should create a object from item', function () {
             }
         };
 
-        const objetoRetorno = createCourseObjectService.createCourseObject()
+        const objetoRetorno = createCourseObjectService.createCourseObject(item)
 
         assert.strictEqual(objetoRetorno.categoria, item.categoria.S);
         assert.strictEqual(objetoRetorno.nome, item.nome.S);
