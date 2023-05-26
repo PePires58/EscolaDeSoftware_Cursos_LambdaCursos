@@ -3,11 +3,7 @@ const getCoursesService = require('./services/get-courses.service');
 exports.lambdaHandler = async (event, context) => {
 
     try {
-
         const cursos = await getCoursesService.getCourses();
-
-        console.log(cursos);
-        console.log(JSON.stringify(cursos));
 
         const hasCourses = cursos.length > 0;
         if (hasCourses)
@@ -36,9 +32,7 @@ function errorResult(statusCode, errors) {
 function defaultResult(statusCode, object) {
     return {
         'statusCode': statusCode,
-        'body': JSON.stringify({
-            object
-        }),
+        'body': object,
         'isBase64Encoded': false,
         'headers': {
             'Content-Type': 'application/json'
