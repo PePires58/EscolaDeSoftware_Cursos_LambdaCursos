@@ -6,9 +6,6 @@ on:
 jobs:
   Build-lambda:
     uses: PePires58/ReusableWorkflows/.github/workflows/001_nodejs_lambda.yaml@main
-    with:
-      working-directory: src
-      execute-unit-tests: "true"
 
   Development-lambda-workflow:
     needs: [Build-lambda]
