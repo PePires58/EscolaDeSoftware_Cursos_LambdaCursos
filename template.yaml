@@ -24,6 +24,8 @@ Resources:
       Environment:
         Variables:
           TableName: !Ref TableName
-      Tags: 
-        - Key: Ambiente
-          Value: !Ref Environment
+    Tags: 
+      - Key: Ambiente
+        Value: !Ref Environment
+      - Key: Microservico
+        Value: Cursos
