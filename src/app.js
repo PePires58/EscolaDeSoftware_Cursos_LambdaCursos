@@ -6,6 +6,9 @@ exports.lambdaHandler = async (event, context) => {
 
         const cursos = await getCoursesService.getCourses();
 
+        console.log(cursos);
+        console.log(JSON.stringify(cursos));
+
         const hasCourses = cursos.length > 0;
         if (hasCourses)
             return defaultResult(200, cursos);
