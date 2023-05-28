@@ -4,12 +4,9 @@ on:
     branches: [development]
 
 jobs:
-  Build-lambda:
-    uses: PePires58/ReusableWorkflows/.github/workflows/001_nodejs_lambda.yaml@main
 
   Deploy-lambda:
-    needs: [Build-lambda]
-    uses: PePires58/ReusableWorkflows/.github/workflows/001_nodejs_deploy_lambda.yaml@main
+    uses: PePires58/ReusableWorkflows/.github/workflows/001_nodejs_deploy_lambda_pipeline.yaml@main
     with: 
       stack-name: "dev-escoladesoftware-cursos-lambdacursos-fn"
       parameters-file-path: "infra/dev.parameters.json"
