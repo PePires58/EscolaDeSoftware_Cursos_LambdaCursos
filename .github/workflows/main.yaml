@@ -4,30 +4,14 @@ on:
     branches: [main]
 
 jobs:
-  Prod-Lambda-Workflow:
-    runs-on: ubuntu-latest
+  Deploy-lambda:
+    uses: PePires58/ReusableWorkflows/.github/workflows/001_nodejs_deploy_pipeline.yaml@main
+    with: 
+      stack-name: "prod-escoladesoftware-cursos-lambdacursos-fn"
+      parameters-file-path: "infra/prod.parameters.json"
+    secrets:
+      AWS_BUCKET_DEPLOY: ${{ secrets.AWS_BUCKET_DEPLOY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Restore dependencies
-        run: cd src && npm install
-
-      - name: Testing
-        run: cd src && npm run test
-
-      - name: Package
-        run: |
-          sam package --s3-bucket ${{ secrets.AWS_BUCKET_DEPLOY }} --template-file template.yaml --output-template-file deploy.yaml
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-
-      - name: Deploy
-        run: |
-          aws cloudformation deploy --template-file deploy.yaml --stack-name prod-escoladesoftware-cursos-lambdacursos-fn --capabilities CAPABILITY_NAMED_IAM --parameter-overrides  file://infra/prod.parameters.json
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+      
