@@ -10,23 +10,15 @@ exports.lambdaHandler = async (event, context) => {
             return defaultResult(200, cursos);
         else
             return errorResult(204, 'Não foram encontrados cursos');
-
     } catch (error) {
         return errorResult(500, error);
     }
 }
 
 function errorResult(statusCode, errors) {
-    return {
-        'statusCode': statusCode,
-        'body': JSON.stringify({
-            errors: errors
-        }),
-        'isBase64Encoded': false,
-        'headers': {
-            'Content-Type': 'application/json'
-        }
-    };
+    return defaultResult(statusCode, {
+        errors: errors
+    });
 }
 
 function defaultResult(statusCode, object) {
