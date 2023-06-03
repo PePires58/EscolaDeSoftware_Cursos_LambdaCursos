@@ -24,7 +24,7 @@ function errorResult(statusCode, errors) {
 function defaultResult(statusCode, object) {
     return {
         'statusCode': statusCode,
-        'body': object,
+        'body': JSON.stringify(object),
         'isBase64Encoded': false,
         'headers': {
             'Content-Type': 'application/json'

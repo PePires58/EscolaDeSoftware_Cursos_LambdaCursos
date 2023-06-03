@@ -1,4 +1,4 @@
-# Escola de Software - Crusos - Lambda Cursos
+# Escola de Software - Cursos - Lambda Cursos
 
 Esse repositório contém uma função lambda para consultar os cursos na base de dados. Além disso, contém o template de infraestrutura e a esteira CI/CD.
 
