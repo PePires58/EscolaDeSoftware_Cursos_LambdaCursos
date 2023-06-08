@@ -31,3 +31,9 @@ Resources:
         Value: Cursos
       - Key: Servico
         Value: Lambda
+
+  CursosLambdaCursosLogGroup: 
+    Type: AWS::Logs::LogGroup
+    Properties: 
+      LogGroupName: !Join ["", ["/aws/lambda/", !Ref Environment, "_escoladesoftware-cursos-lambdacursosfn"]]
+      RetentionInDays: 3
