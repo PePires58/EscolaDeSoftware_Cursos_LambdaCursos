@@ -37,10 +37,10 @@ Resources:
     Properties: 
       LogGroupName: !Join ["", ["/aws/lambda/", !Ref Environment, "_escoladesoftware-cursos-lambdacursosfn"]]
       RetentionInDays: 3
-    Tags: 
-      - Key: Ambiente
-        Value: !Ref Environment
-      - Key: Microservico
-        Value: Cursos
-      - Key: Servico
-        Value: LogGroup
+      Tags: 
+        - Key: Ambiente
+          Value: !Ref Environment
+        - Key: Microservico
+          Value: Cursos
+        - Key: Servico
+          Value: LogGroup
