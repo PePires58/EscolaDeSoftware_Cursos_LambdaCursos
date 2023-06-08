@@ -1,4 +1,4 @@
-name: Development workflow - Lambda Function - Prod
+name: Production workflow - Lambda Function - Prod
 on:
   push:
     branches: [main]
@@ -14,4 +14,12 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      
+  Update-LogGroup:
+    needs: [Deploy-lambda]
+    uses: PePires58/ReusableWorkflows/.github/workflows/003_cloudwatch_log_group_put_retention.yaml@main
+    with: 
+      log-group-name: "/aws/lambda/prod_escoladesoftware-cursos-lambdacursosfn"
+    secrets:
+      AWS_BUCKET_DEPLOY: ${{ secrets.AWS_BUCKET_DEPLOY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
