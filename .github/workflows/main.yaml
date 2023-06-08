@@ -20,6 +20,5 @@ jobs:
     with: 
       log-group-name: "/aws/lambda/prod_escoladesoftware-cursos-lambdacursosfn"
     secrets:
-      AWS_BUCKET_DEPLOY: ${{ secrets.AWS_BUCKET_DEPLOY }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
